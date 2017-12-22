@@ -18,8 +18,6 @@ class AWS:
         end = datetime.utcnow()
         start = end - timedelta(seconds=600)
         
-        
-        
         for vm in vms:
             try:
                 
