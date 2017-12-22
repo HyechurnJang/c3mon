@@ -12,8 +12,13 @@ from pygics import Task
 
 gevent.monkey.patch_all()
 
-ls = Logstash('192.168.56.254')
-c3 = C3('211.245.65.143', 'cliqradmin', '6BA257A8F62F3D97')
+LOGSTASH_IP = '192.168.56.254'
+C3_IP = '211.245.65.143'
+C3_USER = 'cliqradmin'
+C3_KEY = '6BA257A8F62F3D97'
+
+ls = Logstash(LOGSTASH_IP)
+c3 = C3(C3_IP, C3_USER, C3_KEY)
 aws = AWS()
 
 def doAgent():
