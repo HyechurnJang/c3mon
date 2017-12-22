@@ -85,11 +85,6 @@ class C3:
         fetches = []
         jobs_data = self.getURL(self.url_jobs)['jobs']
         for job_data in jobs_data:
-#             jobId = job_data['id']
-#             jobName = job_data['name']
-#             cloudFamily = job_data['cloudFamily']
-#             environment = job_data['environment']
-            
             fetches.append(gevent.spawn(fetch, self, vms,
                                         job_data['id'],
                                         job_data['name'],
