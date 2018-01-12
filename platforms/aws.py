@@ -12,6 +12,22 @@ class AWS:
     def __init__(self):
         self.ec2 = boto3.resource('ec2')
         self.cw = boto3.client('cloudwatch')
+        
+    def getVMs(self):
+        aws = []
+        instances = self.ec2.instances.filter(
+            Filters=[{'Name': 'instance-state-name', 'Values': ['running']}]
+        )
+        for instance in instances:
+            desc = {
+                'id' : instance.id,
+                'publicIp' : instance.public_ip_address,
+                'privateIp' : instance.private_ip_address,
+                'hostName' : virtualMachine['hostName'],
+                'metric' : {}
+            }
+            aws.append(desc)
+        return {'amazon' : aws}
     
     def getMetric(self, vms):
         
