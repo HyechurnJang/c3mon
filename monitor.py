@@ -12,7 +12,7 @@ from pygics import Task
 
 gevent.monkey.patch_all()
 
-LOGSTASH_IP = '192.168.56.254'
+LOGSTASH_IP = '210.93.172.30'
 # C3_IP = '211.245.65.143'
 # C3_USER = 'cliqradmin'
 # C3_KEY = '6BA257A8F62F3D97'
@@ -29,11 +29,15 @@ def doAgent():
 #     vms = c3.getVMs()
     vms = aws.getVMs()
     
+    print json.dumps(vms)
+    
     #===========================================================================
     # 2. Get Cloud Statistics
     #===========================================================================
     print 'start get metrics'
     aws.getMetric(vms['amazon'])
+    
+    print json.dumps(vms)
     
     #===========================================================================
     # 3. Push to ELK

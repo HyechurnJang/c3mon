@@ -19,13 +19,14 @@ class AWS:
             Filters=[{'Name': 'instance-state-name', 'Values': ['running']}]
         )
         for instance in instances:
+            print instance.id,
             desc = {
                 'id' : instance.id,
                 'publicIp' : instance.public_ip_address,
                 'privateIp' : instance.private_ip_address,
-                'hostName' : virtualMachine['hostName'],
                 'metric' : {}
             }
+            print 'OK'
             aws.append(desc)
         return {'amazon' : aws}
     
